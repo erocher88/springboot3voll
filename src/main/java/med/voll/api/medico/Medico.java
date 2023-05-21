@@ -29,6 +29,7 @@ public class Medico {
 	private String email;
 	private String telefono;
 	private String documento;
+	private Boolean activo;
 	@Enumerated(EnumType.STRING)
 	private Especialidad especialidad;
 	@Embedded
@@ -36,6 +37,7 @@ public class Medico {
 	
 	
 	public Medico(DatosRegistroMedico datosRegistroMedico) {
+		this.activo = true;
 		this.nombre = datosRegistroMedico.nombre();
 		this.email = datosRegistroMedico.email();
 		this.telefono = datosRegistroMedico.telefono();
@@ -58,6 +60,12 @@ public class Medico {
 		if(datosActualizarMedico.direccion() !=null) {
 			this.direccion = direccion.actualizarDatos(datosActualizarMedico.direccion());
 		}
+		
+	}
+
+
+	public void desactivarMedico() {
+		this.activo = false;
 		
 	}
 	
